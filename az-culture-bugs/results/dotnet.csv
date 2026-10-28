@@ -1,0 +1,57 @@
+platform,culture,test,code,expected,actual,pass
+.NET,en-US,upper_ascii,"""file"".ToUpper()","FILE","FILE",True
+.NET,en-US,lower_ascii,"""FILE"".ToLower()","file","file",True
+.NET,en-US,email_lower,"""INFO@SITE.AZ"".ToLower()","info@site.az","info@site.az",True
+.NET,en-US,equals_ignorecase,"string.Equals(""file"", ""FILE"", CurrentCultureIgnoreCase)","True","True",True
+.NET,en-US,endswith_ignorecase,"""photo.GIF"".EndsWith("".gif"", CurrentCultureIgnoreCase)","True","True",True
+.NET,en-US,dictionary_lookup,"Dictionary(CurrentCultureIgnoreCase)[""ID""] with key ""id""","True","True",True
+.NET,en-US,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","True",True
+.NET,en-US,double_parse,"double.Parse(""3.14"")","3.14","3.14",True
+.NET,en-US,double_tostring,"3.14.ToString()","3.14","3.14",True
+.NET,en-US,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","ILHAM",False
+.NET,en-US,az_lower,"""İSTİQLAL"".ToLower()  (Azerbaijani word)","istiqlal","istiqlal",True
+.NET,en-US,control_upper_invariant,"""file"".ToUpperInvariant()","FILE","FILE",True
+.NET,en-US,control_equals_ordinal,"string.Equals(""file"", ""FILE"", OrdinalIgnoreCase)","True","True",True
+.NET,en-US,control_parse_invariant,"double.Parse(""3.14"", CultureInfo.InvariantCulture)","3.14","3.14",True
+.NET,az-Latn-AZ,upper_ascii,"""file"".ToUpper()","FILE","FİLE",False
+.NET,az-Latn-AZ,lower_ascii,"""FILE"".ToLower()","file","fıle",False
+.NET,az-Latn-AZ,email_lower,"""INFO@SITE.AZ"".ToLower()","info@site.az","ınfo@sıte.az",False
+.NET,az-Latn-AZ,equals_ignorecase,"string.Equals(""file"", ""FILE"", CurrentCultureIgnoreCase)","True","False",False
+.NET,az-Latn-AZ,endswith_ignorecase,"""photo.GIF"".EndsWith("".gif"", CurrentCultureIgnoreCase)","True","False",False
+.NET,az-Latn-AZ,dictionary_lookup,"Dictionary(CurrentCultureIgnoreCase)[""ID""] with key ""id""","True","False",False
+.NET,az-Latn-AZ,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","False",False
+.NET,az-Latn-AZ,double_parse,"double.Parse(""3.14"")","3.14","314",False
+.NET,az-Latn-AZ,double_tostring,"3.14.ToString()","3.14","3,14",False
+.NET,az-Latn-AZ,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","İLHAM",True
+.NET,az-Latn-AZ,az_lower,"""İSTİQLAL"".ToLower()  (Azerbaijani word)","istiqlal","istiqlal",True
+.NET,az-Latn-AZ,control_upper_invariant,"""file"".ToUpperInvariant()","FILE","FILE",True
+.NET,az-Latn-AZ,control_equals_ordinal,"string.Equals(""file"", ""FILE"", OrdinalIgnoreCase)","True","True",True
+.NET,az-Latn-AZ,control_parse_invariant,"double.Parse(""3.14"", CultureInfo.InvariantCulture)","3.14","3.14",True
+.NET,tr-TR,upper_ascii,"""file"".ToUpper()","FILE","FİLE",False
+.NET,tr-TR,lower_ascii,"""FILE"".ToLower()","file","fıle",False
+.NET,tr-TR,email_lower,"""INFO@SITE.AZ"".ToLower()","info@site.az","ınfo@sıte.az",False
+.NET,tr-TR,equals_ignorecase,"string.Equals(""file"", ""FILE"", CurrentCultureIgnoreCase)","True","False",False
+.NET,tr-TR,endswith_ignorecase,"""photo.GIF"".EndsWith("".gif"", CurrentCultureIgnoreCase)","True","False",False
+.NET,tr-TR,dictionary_lookup,"Dictionary(CurrentCultureIgnoreCase)[""ID""] with key ""id""","True","False",False
+.NET,tr-TR,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","False",False
+.NET,tr-TR,double_parse,"double.Parse(""3.14"")","3.14","314",False
+.NET,tr-TR,double_tostring,"3.14.ToString()","3.14","3,14",False
+.NET,tr-TR,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","İLHAM",True
+.NET,tr-TR,az_lower,"""İSTİQLAL"".ToLower()  (Azerbaijani word)","istiqlal","istiqlal",True
+.NET,tr-TR,control_upper_invariant,"""file"".ToUpperInvariant()","FILE","FILE",True
+.NET,tr-TR,control_equals_ordinal,"string.Equals(""file"", ""FILE"", OrdinalIgnoreCase)","True","True",True
+.NET,tr-TR,control_parse_invariant,"double.Parse(""3.14"", CultureInfo.InvariantCulture)","3.14","3.14",True
+.NET,invariant,upper_ascii,"""file"".ToUpper()","FILE","FILE",True
+.NET,invariant,lower_ascii,"""FILE"".ToLower()","file","file",True
+.NET,invariant,email_lower,"""INFO@SITE.AZ"".ToLower()","info@site.az","info@site.az",True
+.NET,invariant,equals_ignorecase,"string.Equals(""file"", ""FILE"", CurrentCultureIgnoreCase)","True","True",True
+.NET,invariant,endswith_ignorecase,"""photo.GIF"".EndsWith("".gif"", CurrentCultureIgnoreCase)","True","True",True
+.NET,invariant,dictionary_lookup,"Dictionary(CurrentCultureIgnoreCase)[""ID""] with key ""id""","True","True",True
+.NET,invariant,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","True",True
+.NET,invariant,double_parse,"double.Parse(""3.14"")","3.14","3.14",True
+.NET,invariant,double_tostring,"3.14.ToString()","3.14","3.14",True
+.NET,invariant,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","ILHAM",False
+.NET,invariant,az_lower,"""İSTİQLAL"".ToLower()  (Azerbaijani word)","istiqlal","İstİqlal",False
+.NET,invariant,control_upper_invariant,"""file"".ToUpperInvariant()","FILE","FILE",True
+.NET,invariant,control_equals_ordinal,"string.Equals(""file"", ""FILE"", OrdinalIgnoreCase)","True","True",True
+.NET,invariant,control_parse_invariant,"double.Parse(""3.14"", CultureInfo.InvariantCulture)","3.14","3.14",True

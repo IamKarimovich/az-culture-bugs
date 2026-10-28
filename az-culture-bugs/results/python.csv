@@ -1,0 +1,13 @@
+platform,culture,test,code,expected,actual,pass
+Python,(locale-independent),upper_ascii,"""file"".upper()",FILE,FILE,True
+Python,(locale-independent),lower_ascii,"""FILE"".lower()",file,file,True
+Python,(locale-independent),az_upper,"""ilham"".upper()",İLHAM,ILHAM,False
+Python,(locale-independent),az_lower,"""İSTİQLAL"".lower()",istiqlal,i̇sti̇qlal,False
+Python,(locale-independent),az_lower_length,"len(""İ"".lower())",1,2,False
+Python,(locale-independent),az_casefold_equal,"""İLHAM"".casefold() == ""ilham"".casefold()",True,False,False
+Python,(locale-independent),dotless_upper,"""ı"".upper()",I,I,True
+Python,(locale-independent),schwa_upper,"""Azərbaycan"".upper()",AZƏRBAYCAN,AZƏRBAYCAN,True
+SQLite,(locale-independent),sqlite_upper_ascii,SELECT upper('file'),FILE,FILE,True
+SQLite,(locale-independent),sqlite_upper_az,SELECT upper('şəhər'),ŞƏHƏR,şəHəR,False
+SQLite,(locale-independent),sqlite_nocase_az,SELECT 'ÇAY' = 'çay' COLLATE NOCASE,True,False,False
+SQLite,(locale-independent),sqlite_like_az,SELECT 'Gəncə' LIKE 'GƏNCƏ',True,False,False

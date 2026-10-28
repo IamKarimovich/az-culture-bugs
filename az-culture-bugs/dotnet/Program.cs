@@ -30,6 +30,8 @@ var tests = new (string Id, string Code, Func<string> Run, string Expected)[]
         () => Regex.IsMatch("FILE", "file", RegexOptions.IgnoreCase).ToString(), "True"),
     ("double_parse", "double.Parse(\"3.14\")", () => double.Parse("3.14").ToString(CultureInfo.InvariantCulture), "3.14"),
     ("double_tostring", "3.14.ToString()", () => 3.14.ToString(), "3.14"),
+    ("price_parse", "decimal.Parse(\"19.99\")  (qiymət)", () => decimal.Parse("19.99").ToString(CultureInfo.InvariantCulture), "19.99"),
+    ("lenient_group", "double.Parse(\"1.2.3.4\")  (yanlış format)", () => double.Parse("1.2.3.4").ToString(CultureInfo.InvariantCulture), "FormatException"),
     ("az_upper", "\"ilham\".ToUpper()  (Azerbaijani word)", () => "ilham".ToUpper(), "İLHAM"),
     ("az_lower", "\"İSTİQLAL\".ToLower()  (Azerbaijani word)", () => "İSTİQLAL".ToLower(), "istiqlal"),
     // Controls: the invariant / ordinal APIs should pass everywhere.
@@ -41,6 +43,7 @@ var tests = new (string Id, string Code, Func<string> Run, string Expected)[]
 };
 
 var rows = new List<string> { "platform,culture,test,code,expected,actual,pass" };
+var formats = new List<string> { "culture,decimal_separator,group_separator" };
 Console.WriteLine($"{RuntimeInformation.OSDescription} | .NET {Environment.Version}\n");
 
 foreach (var name in cultures)
@@ -49,7 +52,9 @@ foreach (var name in cultures)
     CultureInfo.CurrentCulture = culture;
     CultureInfo.CurrentUICulture = culture;
     var label = name == "" ? "invariant" : name;
-    Console.WriteLine($"== {label} ==");
+    var nf = culture.NumberFormat;
+    Console.WriteLine($"== {label} ==   decimal separator '{nf.NumberDecimalSeparator}', group separator '{nf.NumberGroupSeparator}'");
+    formats.Add($"{label},{Q(nf.NumberDecimalSeparator)},{Q(nf.NumberGroupSeparator)}");
 
     foreach (var t in tests)
     {
@@ -65,6 +70,7 @@ foreach (var name in cultures)
 
 Directory.CreateDirectory("results");
 File.WriteAllLines("results/dotnet.csv", rows, new UTF8Encoding(false));
+File.WriteAllLines("results/number_format.csv", formats, new UTF8Encoding(false));
 File.WriteAllText("results/environment_dotnet.txt",
     $"OS: {RuntimeInformation.OSDescription}\n.NET: {Environment.Version}\n", new UTF8Encoding(false));
 Console.WriteLine("Saved results/dotnet.csv");

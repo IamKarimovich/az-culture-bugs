@@ -4,13 +4,13 @@ The same string and number operations, run under different culture settings in .
 
 ## Why
 
-Azerbaijani (and Turkish) have two letters `i`: dotted `i/İ` and dotless `ı/I`. In the `az-Latn-AZ` culture the upper case of `i` is `İ`, and the lower case of `I` is `ı`. Code that uses culture-sensitive APIs for technical strings (keys, e-mails, file extensions, protocol names) silently changes behaviour on a machine or server whose culture is Azerbaijani. Decimal numbers change too: the decimal separator is a comma.
+Azerbaijani (and Turkish) have two letters `i`: dotted `i/İ` and dotless `ı/I`. In the `az-Latn-AZ` culture the upper case of `i` is `İ`, and the lower case of `I` is `ı`. Code that uses culture-sensitive APIs for technical strings (keys, e-mails, file extensions, protocol names) silently changes behaviour on a machine or server whose culture is Azerbaijani. Decimal numbers change too. In `az-Latn-AZ` the decimal separator is a comma and the group (thousands) separator is a dot, so `double.Parse("3.14")` reads "3 thousand 14" and returns `314`. The parser does not check where group separators stand, so even `double.Parse("1.2.3.4")` returns `1234` instead of throwing. The separators of each culture are saved to `results/number_format.csv`.
 
 The opposite also happens: culture-blind functions in Python, JavaScript and SQLite handle Azerbaijani words incorrectly.
 
 ## What is tested
 
-- **.NET** (`dotnet/Program.cs`): 14 operations under `en-US`, `az-Latn-AZ`, `tr-TR` and the invariant culture. The last three are invariant/ordinal controls.
+- **.NET** (`dotnet/Program.cs`): 16 operations under `en-US`, `az-Latn-AZ`, `tr-TR` and the invariant culture. The last three are invariant/ordinal controls.
 - **Python and SQLite** (`python_tests.py`): `str.upper()`, `lower()`, `casefold()` on Azerbaijani words; SQLite `upper()`, `COLLATE NOCASE`, `LIKE`.
 - **JavaScript** (`js_tests.mjs`): `toUpperCase()` vs `toLocaleUpperCase("az")`, `toLowerCase()`, `parseFloat` with a comma.
 

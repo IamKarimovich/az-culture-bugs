@@ -53,10 +53,14 @@ first_control = next(i for i, t in enumerate(tests) if t.startswith("control"))
 fig, ax = plt.subplots(figsize=(13, 0.5 * (len(tests) + 2) + 1.0), dpi=150)
 draw_table(ax, labels, cultures, cells, col_w=2.2, label_w=5.6, sep_before=first_control)
 fig.suptitle("Eyni .NET kodu, dörd fərqli mədəniyyət ayarında (CultureInfo.CurrentCulture)", fontsize=13, y=0.98)
+fmt = {r["culture"]: r for r in read("results/number_format.csv")}
+seps = "   ·   ".join(f'{c}: kəsr "{fmt[c]["decimal_separator"]}", minlik "{fmt[c]["group_separator"]}"'
+                     for c in cultures if c in fmt)
+fig.text(0.01, 0.035, "Ədəd ayırıcıları  —  " + seps, fontsize=9.5)
 fig.text(0.01, 0.01, "Yaşıl: proqramçının gözlədiyi nəticə. Qırmızı: fərqli nəticə. "
          "Xəttin altındakı sətirlər mədəniyyətdən asılı olmayan (invariant/ordinal) variantlardır.",
          fontsize=9, color="dimgray")
-fig.tight_layout(rect=(0, 0.03, 1, 0.95))
+fig.tight_layout(rect=(0, 0.055, 1, 0.95))
 fig.savefig("results/fig_dotnet_matrix.png")
 plt.close(fig)
 

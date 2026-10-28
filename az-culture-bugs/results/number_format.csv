@@ -1,0 +1,5 @@
+culture,decimal_separator,group_separator
+en-US,".",","
+az-Latn-AZ,",","."
+tr-TR,",","."
+invariant,".",","

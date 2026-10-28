@@ -8,6 +8,8 @@ platform,culture,test,code,expected,actual,pass
 .NET,en-US,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","True",True
 .NET,en-US,double_parse,"double.Parse(""3.14"")","3.14","3.14",True
 .NET,en-US,double_tostring,"3.14.ToString()","3.14","3.14",True
+.NET,en-US,rate_parse,"decimal.Parse(""1.7000"")  (USD/AZN kursu)","1.7000","1.7000",True
+.NET,en-US,rate_convert,"250 * decimal.Parse(""1.7000"")  (250 USD manatla)","425","425",True
 .NET,en-US,price_parse,"decimal.Parse(""19.99"")  (qiymət)","19.99","19.99",True
 .NET,en-US,lenient_group,"double.Parse(""1.2.3.4"")  (yanlış format)","FormatException","FormatException",True
 .NET,en-US,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","ILHAM",False
@@ -24,6 +26,8 @@ platform,culture,test,code,expected,actual,pass
 .NET,az-Latn-AZ,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","False",False
 .NET,az-Latn-AZ,double_parse,"double.Parse(""3.14"")","3.14","314",False
 .NET,az-Latn-AZ,double_tostring,"3.14.ToString()","3.14","3,14",False
+.NET,az-Latn-AZ,rate_parse,"decimal.Parse(""1.7000"")  (USD/AZN kursu)","1.7000","17000",False
+.NET,az-Latn-AZ,rate_convert,"250 * decimal.Parse(""1.7000"")  (250 USD manatla)","425","4250000",False
 .NET,az-Latn-AZ,price_parse,"decimal.Parse(""19.99"")  (qiymət)","19.99","1999",False
 .NET,az-Latn-AZ,lenient_group,"double.Parse(""1.2.3.4"")  (yanlış format)","FormatException","1234",False
 .NET,az-Latn-AZ,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","İLHAM",True
@@ -40,6 +44,8 @@ platform,culture,test,code,expected,actual,pass
 .NET,tr-TR,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","False",False
 .NET,tr-TR,double_parse,"double.Parse(""3.14"")","3.14","314",False
 .NET,tr-TR,double_tostring,"3.14.ToString()","3.14","3,14",False
+.NET,tr-TR,rate_parse,"decimal.Parse(""1.7000"")  (USD/AZN kursu)","1.7000","17000",False
+.NET,tr-TR,rate_convert,"250 * decimal.Parse(""1.7000"")  (250 USD manatla)","425","4250000",False
 .NET,tr-TR,price_parse,"decimal.Parse(""19.99"")  (qiymət)","19.99","1999",False
 .NET,tr-TR,lenient_group,"double.Parse(""1.2.3.4"")  (yanlış format)","FormatException","1234",False
 .NET,tr-TR,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","İLHAM",True
@@ -56,6 +62,8 @@ platform,culture,test,code,expected,actual,pass
 .NET,invariant,regex_ignorecase,"Regex.IsMatch(""FILE"", ""file"", IgnoreCase)","True","True",True
 .NET,invariant,double_parse,"double.Parse(""3.14"")","3.14","3.14",True
 .NET,invariant,double_tostring,"3.14.ToString()","3.14","3.14",True
+.NET,invariant,rate_parse,"decimal.Parse(""1.7000"")  (USD/AZN kursu)","1.7000","1.7000",True
+.NET,invariant,rate_convert,"250 * decimal.Parse(""1.7000"")  (250 USD manatla)","425","425",True
 .NET,invariant,price_parse,"decimal.Parse(""19.99"")  (qiymət)","19.99","19.99",True
 .NET,invariant,lenient_group,"double.Parse(""1.2.3.4"")  (yanlış format)","FormatException","FormatException",True
 .NET,invariant,az_upper,"""ilham"".ToUpper()  (Azerbaijani word)","İLHAM","ILHAM",False

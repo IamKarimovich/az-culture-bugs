@@ -37,11 +37,11 @@ var tests = new (string Id, string Code, Func<string> Run, string Expected)[]
     ("az_upper", "\"ilham\".ToUpper()  (Azerbaijani word)", () => "ilham".ToUpper(), "İLHAM"),
     ("az_lower", "\"İSTİQLAL\".ToLower()  (Azerbaijani word)", () => "İSTİQLAL".ToLower(), "istiqlal"),
     // Controls: the invariant / ordinal APIs should pass everywhere.
-    ("control_upper_invariant", "\"file\".ToUpperInvariant()", () => "file".ToUpperInvariant(), "FILE"),
+    ("control_lower_invariant", "\"INFO@SITE.AZ\".ToLowerInvariant()", () => "INFO@SITE.AZ".ToLowerInvariant(), "info@site.az"),
     ("control_equals_ordinal", "string.Equals(\"file\", \"FILE\", OrdinalIgnoreCase)",
         () => string.Equals("file", "FILE", StringComparison.OrdinalIgnoreCase).ToString(), "True"),
-    ("control_parse_invariant", "double.Parse(\"3.14\", CultureInfo.InvariantCulture)",
-        () => double.Parse("3.14", CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture), "3.14"),
+    ("control_parse_invariant", "decimal.Parse(\"1.7000\", CultureInfo.InvariantCulture)",
+        () => decimal.Parse("1.7000", CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture), "1.7000"),
 };
 
 var rows = new List<string> { "platform,culture,test,code,expected,actual,pass" };
